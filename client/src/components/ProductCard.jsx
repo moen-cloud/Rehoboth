@@ -20,8 +20,9 @@ const ProductCard = ({ product }) => {
           src={product.image}
           alt={product.name}
           className="w-full h-full object-contain"
-          onError={(e) => {
-            e.target.src = 'https://via.placeholder.com/400x400?text=Product';
+         onError={(e) => {
+  e.target.onerror = null; // prevent infinite loop
+  e.target.src = 'https://placehold.co/400x400?text=No+Image';
           }}
         />
         {/* Stock Badge */}
