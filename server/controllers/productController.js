@@ -2,7 +2,7 @@ import Product from '../models/Product.js';
 
 export const getProducts = async (req, res) => {
   try {
-    const products = await Product.find({});
+    const products = await Product.find({}).sort({ sortOrder: 1 });
     res.json(products);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -25,7 +25,7 @@ export const getProductById = async (req, res) => {
 
 export const createProduct = async (req, res) => {
   try {
-    const { name, description, price, image, category, stock } = req.body;
+    const { name, description, price, image, category, stock, sortOrder } = req.body;
 
     const product = new Product({
       name,
@@ -34,6 +34,7 @@ export const createProduct = async (req, res) => {
       image,
       category,
       stock,
+      sortOrder: sortOrder || 0,
     });
 
     const createdProduct = await product.save();
@@ -48,13 +49,13 @@ export const updateProduct = async (req, res) => {
     const product = await Product.findById(req.params.id);
 
     if (product) {
-      // Update only provided fields
       product.name = req.body.name || product.name;
       product.description = req.body.description || product.description;
       product.price = req.body.price !== undefined ? req.body.price : product.price;
       product.image = req.body.image || product.image;
       product.category = req.body.category || product.category;
       product.stock = req.body.stock !== undefined ? req.body.stock : product.stock;
+      product.sortOrder = req.body.sortOrder !== undefined ? req.body.sortOrder : product.sortOrder;
 
       const updatedProduct = await product.save();
       res.json(updatedProduct);

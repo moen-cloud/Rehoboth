@@ -51,3 +51,11 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Keep backend alive on Render free tier
+const BACKEND_URL = process.env.BACKEND_URL || 'https://rehoboth-backend-de3y.onrender.com';
+setInterval(() => {
+  fetch(`${BACKEND_URL}/`)
+    .then(() => console.log('Keep-alive ping sent'))
+    .catch(() => console.log('Keep-alive ping failed'));
+}, 14 * 60 * 1000);

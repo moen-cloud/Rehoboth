@@ -27,6 +27,10 @@ const productSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
+  sortOrder: {
+    type: Number,
+    default: 0,
+  },
 }, {
   timestamps: true,
 });

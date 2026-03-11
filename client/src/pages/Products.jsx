@@ -71,7 +71,6 @@ const Products = () => {
           backgroundImage: `linear-gradient(rgba(210,180,140,0.85), rgba(181,136,99,0.85)), url(${heroBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         <div className="text-2xl text-white font-semibold drop-shadow-lg">Loading products...</div>
@@ -81,14 +80,13 @@ const Products = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Creamy Brown Gradient */}
+      {/* Hero Section */}
       <section
         className="relative text-white overflow-hidden"
         style={{
           backgroundImage: `linear-gradient(rgba(210,180,140,0.85), rgba(181,136,99,0.85)), url(${heroBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20"></div>
@@ -112,19 +110,18 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Products Section - Elegant Creamy Gradient */}
+      {/* Products Section */}
       <section
         className="relative"
         style={{
           backgroundImage: `linear-gradient(rgba(210,180,140,0.85), rgba(181,136,99,0.85)), url(${featuresBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 relative z-10">
-          
-          {/* Search Bar - More Elegant */}
+
+          {/* Search Bar */}
           <div className="mb-12 max-w-2xl mx-auto">
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
@@ -153,7 +150,7 @@ const Products = () => {
             )}
           </div>
 
-          {/* Category Filters - Navbar Style */}
+          {/* Category Filters */}
           <div className="mb-10">
             <h3 className="text-xl font-bold text-white mb-5 drop-shadow-lg">Categories</h3>
             <div className="flex flex-wrap gap-3">
@@ -173,7 +170,7 @@ const Products = () => {
             </div>
           </div>
 
-          {/* Stock Status Filters - Navbar Style */}
+          {/* Stock Status Filters */}
           <div className="mb-14">
             <h3 className="text-xl font-bold text-white mb-5 drop-shadow-lg">Stock Status</h3>
             <div className="flex flex-wrap gap-3">
@@ -242,23 +239,26 @@ const Products = () => {
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filteredProducts.map((product) => {
                 const isInStock = product.stock > 0;
+                const optimizedImage = product.image?.replace(
+                  '/upload/',
+                  '/upload/w_400,h_400,c_fill,q_auto,f_auto/'
+                );
                 return (
-                  <div 
-                    key={product._id} 
+                  <div
+                    key={product._id}
                     className="group relative bg-white/90 backdrop-blur-md rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 border-amber-100 transform hover:scale-105"
                   >
-                    {/* Product Image Container */}
                     <div className="relative aspect-square w-full overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50">
                       <img
-                        src={product.image}
+                        src={optimizedImage}
                         alt={product.name}
+                        loading="lazy"
                         className="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
                         onError={(e) => {
-                          e.target.src = 'https://via.placeholder.com/400x400?text=Product';
+                          e.target.onerror = null;
+                          e.target.src = 'https://placehold.co/400x400?text=No+Image';
                         }}
                       />
-                      
-                      {/* Stock Badge - Top Right */}
                       <div className="absolute top-3 right-3">
                         {isInStock ? (
                           <span className="inline-flex items-center rounded-full bg-gradient-to-r from-green-400 to-green-500 px-3 py-1.5 text-xs font-bold text-white shadow-lg">
@@ -270,8 +270,6 @@ const Products = () => {
                           </span>
                         )}
                       </div>
-
-                      {/* Low Stock Warning - Bottom */}
                       {isInStock && product.stock < 10 && (
                         <div className="absolute bottom-3 left-3 right-3">
                           <span className="block w-full text-center bg-gradient-to-r from-orange-400 to-orange-500 backdrop-blur-sm px-3 py-1.5 text-xs font-bold text-white rounded-full shadow-lg">
@@ -280,8 +278,6 @@ const Products = () => {
                         </div>
                       )}
                     </div>
-
-                    {/* Product Info */}
                     <div className="p-5">
                       <h3 className="text-base font-bold text-gray-900 line-clamp-2 min-h-[3rem] mb-2">
                         {product.name}
@@ -289,15 +285,11 @@ const Products = () => {
                       <p className="text-sm text-gray-600 line-clamp-2 mb-4 leading-relaxed">
                         {product.description}
                       </p>
-                      
-                      {/* Price */}
                       <div className="mb-4">
                         <p className="text-2xl font-bold text-amber-700">
                           KSh {product.price.toFixed(2)}
                         </p>
                       </div>
-
-                      {/* Add to Cart Button - Navbar Style */}
                       <button
                         onClick={() => handleAddToCart(product)}
                         disabled={!isInStock}

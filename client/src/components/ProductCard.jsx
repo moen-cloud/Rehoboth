@@ -13,19 +13,25 @@ const ProductCard = ({ product }) => {
 
   const isInStock = product.stock > 0;
 
+  // Cloudinary image optimization
+  const optimizedImage = product.image?.replace(
+    '/upload/',
+    '/upload/w_400,h_400,c_fill,q_auto,f_auto/'
+  );
+
   return (
     <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full border border-amber-100">
       <div className="w-full h-56 bg-gray-100 flex items-center justify-center p-4 relative">
         <img
-          src={product.image}
+          src={optimizedImage}
           alt={product.name}
+          loading="lazy"
           className="w-full h-full object-contain"
-         onError={(e) => {
-  e.target.onerror = null; // prevent infinite loop
-  e.target.src = 'https://placehold.co/400x400?text=No+Image';
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = 'https://placehold.co/400x400?text=No+Image';
           }}
         />
-        {/* Stock Badge */}
         {isInStock ? (
           <span className="absolute top-2 right-2 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
             In Stock

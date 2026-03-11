@@ -364,7 +364,7 @@ const products = [
 
 
   {
-    name: "Ameru Peanuts Coated 60g",
+    name: "Ameru Coated Peanuts 60g",
     description: "Roasted, coated and salted peanuts",
     price: 30,
     image: "/images/products/peanuts.jpg",
@@ -373,9 +373,9 @@ const products = [
   },
 
   {
-    name: "Ameru Peanuts Coated 20g",
-    description: "Roasted, coated and salted peanuts",
-    price: 20,
+    name: "Ameru Coated Coconut Peanuts 60g",
+    description: "Roasted, coated and salted Coconut peanuts",
+    price: 30,
     image: "/images/products/ameru-peanuts.jpg",
     category: "Snacks",
     stock: 85
