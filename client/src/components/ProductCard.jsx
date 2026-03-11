@@ -13,7 +13,6 @@ const ProductCard = ({ product }) => {
 
   const isInStock = product.stock > 0;
 
-  // Cloudinary image optimization
   const optimizedImage = product.image?.replace(
     '/upload/',
     '/upload/w_400,h_400,c_fill,q_auto,f_auto/'
@@ -21,7 +20,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full border border-amber-100">
-      <div className="w-full h-56 bg-gray-100 flex items-center justify-center p-4 relative">
+      <div className="w-full h-56 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center relative">
         <img
           src={optimizedImage}
           alt={product.name}
@@ -29,9 +28,15 @@ const ProductCard = ({ product }) => {
           className="w-full h-full object-contain"
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = 'https://placehold.co/400x400?text=No+Image';
+            e.target.style.display = 'none';
+            e.target.parentNode.querySelector('.fallback-icon').style.display = 'flex';
           }}
         />
+        <div
+          className="fallback-icon hidden w-full h-full items-center justify-center"
+        >
+          <ShoppingCart className="w-16 h-16 text-amber-200" />
+        </div>
         {isInStock ? (
           <span className="absolute top-2 right-2 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
             In Stock

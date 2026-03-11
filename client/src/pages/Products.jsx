@@ -71,6 +71,7 @@ const Products = () => {
           backgroundImage: `linear-gradient(rgba(210,180,140,0.85), rgba(181,136,99,0.85)), url(${heroBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
         }}
       >
         <div className="text-2xl text-white font-semibold drop-shadow-lg">Loading products...</div>
@@ -87,6 +88,7 @@ const Products = () => {
           backgroundImage: `linear-gradient(rgba(210,180,140,0.85), rgba(181,136,99,0.85)), url(${heroBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20"></div>
@@ -117,6 +119,7 @@ const Products = () => {
           backgroundImage: `linear-gradient(rgba(210,180,140,0.85), rgba(181,136,99,0.85)), url(${featuresBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
         }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 relative z-10">
@@ -256,9 +259,13 @@ const Products = () => {
                         className="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
                         onError={(e) => {
                           e.target.onerror = null;
-                          e.target.src = 'https://placehold.co/400x400?text=No+Image';
+                          e.target.style.display = 'none';
+                          e.target.parentNode.querySelector('.fallback-icon').style.display = 'flex';
                         }}
                       />
+                      <div className="fallback-icon hidden w-full h-full absolute inset-0 items-center justify-center bg-gradient-to-br from-amber-50 to-orange-50">
+                        <ShoppingCart className="w-16 h-16 text-amber-200" />
+                      </div>
                       <div className="absolute top-3 right-3">
                         {isInStock ? (
                           <span className="inline-flex items-center rounded-full bg-gradient-to-r from-green-400 to-green-500 px-3 py-1.5 text-xs font-bold text-white shadow-lg">
