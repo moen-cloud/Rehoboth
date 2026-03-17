@@ -22,7 +22,8 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     localStorage.removeItem('userInfo');
-    localStorage.removeItem('cartItems');
+    // Do NOT remove cartItems here — they stay saved per user ID
+    // and will only load when that user logs back in
   };
 
   return (

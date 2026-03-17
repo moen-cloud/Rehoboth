@@ -1,24 +1,38 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
+import { AuthContext } from './AuthContext';
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
+  const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
 
-  useEffect(() => {
-    const items = localStorage.getItem('cartItems');
-    if (items) {
-      setCartItems(JSON.parse(items));
-    }
-  }, []);
+  // Get cart key specific to logged in user
+  const getCartKey = (userId) => userId ? `cartItems_${userId}` : null;
 
+  // Load cart when user changes
   useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (user) {
+      const key = getCartKey(user._id);
+      const items = localStorage.getItem(key);
+      setCartItems(items ? JSON.parse(items) : []);
+    } else {
+      // Clear cart from state when logged out
+      setCartItems([]);
+    }
+  }, [user]);
+
+  // Save cart to localStorage only when user is logged in
+  useEffect(() => {
+    if (user) {
+      const key = getCartKey(user._id);
+      localStorage.setItem(key, JSON.stringify(cartItems));
+    }
+  }, [cartItems, user]);
 
   const addToCart = (product) => {
+    if (!user) return;
     const existItem = cartItems.find((x) => x._id === product._id);
-
     if (existItem) {
       setCartItems(
         cartItems.map((x) =>
@@ -46,6 +60,9 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => {
     setCartItems([]);
+    if (user) {
+      localStorage.removeItem(getCartKey(user._id));
+    }
   };
 
   const getCartTotal = () => {

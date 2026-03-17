@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Trash2, Plus, Minus, ArrowRight } from 'lucide-react'; // Removed ShoppingBag
+import { Trash2, Plus, Minus, ArrowRight } from 'lucide-react';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
 import generalBackground from '../assets/images/backgrounds/general-bg.jpg';
@@ -18,7 +18,8 @@ const Cart = () => {
     navigate('/checkout');
   };
 
-  if (cartItems.length === 0) {
+  // Show empty cart for guests or when cart is empty
+  if (!user || cartItems.length === 0) {
     return (
       <div
         className="min-h-screen"
@@ -31,23 +32,35 @@ const Cart = () => {
       >
         <div className="container mx-auto px-4 py-20 text-center">
           <div className="max-w-lg mx-auto bg-white/30 backdrop-blur-lg rounded-3xl shadow-2xl p-12 sm:p-16 border-2 border-white/40">
-
-            {/* Removed ShoppingBag icon */}
-
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white drop-shadow-lg">Your cart is empty</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white drop-shadow-lg">
+              {!user ? 'Please login to view your cart' : 'Your cart is empty'}
+            </h2>
             <p className="text-white/90 text-base sm:text-lg mb-8 drop-shadow">
-              Looks like you haven't added anything yet
+              {!user
+                ? 'You need to be logged in to add items to your cart'
+                : "Looks like you haven't added anything yet"}
             </p>
-
-            <Link
-              to="/products"
-              className="inline-flex items-center gap-3 bg-white/20 text-white px-8 sm:px-10 py-3 sm:py-4 
-              rounded-full font-medium hover:bg-white/30 transition-all duration-300 shadow-lg 
-              hover:shadow-xl transform hover:scale-105 border-2 border-white/30 backdrop-blur-sm"
-            >
-              Start Shopping
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            {!user ? (
+              <Link
+                to="/login"
+                className="inline-flex items-center gap-3 bg-white/20 text-white px-8 sm:px-10 py-3 sm:py-4 
+                rounded-full font-medium hover:bg-white/30 transition-all duration-300 shadow-lg 
+                hover:shadow-xl transform hover:scale-105 border-2 border-white/30 backdrop-blur-sm"
+              >
+                Login
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            ) : (
+              <Link
+                to="/products"
+                className="inline-flex items-center gap-3 bg-white/20 text-white px-8 sm:px-10 py-3 sm:py-4 
+                rounded-full font-medium hover:bg-white/30 transition-all duration-300 shadow-lg 
+                hover:shadow-xl transform hover:scale-105 border-2 border-white/30 backdrop-blur-sm"
+              >
+                Start Shopping
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -96,7 +109,8 @@ const Cart = () => {
                       alt={item.name}
                       className="w-full h-full object-cover rounded-2xl shadow-md"
                       onError={(e) => {
-                        e.target.src = 'https://via.placeholder.com/150?text=Product';
+                        e.target.onerror = null;
+                        e.target.style.display = 'none';
                       }}
                     />
                   </div>
@@ -123,11 +137,9 @@ const Cart = () => {
                         >
                           <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                         </button>
-
                         <span className="w-10 sm:w-16 text-center font-bold text-base sm:text-lg text-white drop-shadow">
                           {item.quantity}
                         </span>
-
                         <button
                           onClick={() => updateQuantity(item._id, item.quantity + 1)}
                           className="p-2 hover:bg-white/30 rounded-full transition-all"
@@ -149,7 +161,6 @@ const Cart = () => {
                           <span className="text-sm sm:text-base">Remove</span>
                         </button>
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -160,22 +171,18 @@ const Cart = () => {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white/30 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-8 sticky top-24 border-2 border-white/40">
-              
               <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-white drop-shadow-lg">
                 Order Summary
               </h2>
-
               <div className="space-y-4 sm:space-y-5 mb-6 sm:mb-8">
                 <div className="flex justify-between text-white text-base sm:text-lg drop-shadow">
                   <span>Subtotal ({cartItems.length} items)</span>
                   <span className="font-semibold">KSh {getCartTotal().toFixed(2)}</span>
                 </div>
-
                 <div className="flex justify-between text-white text-base sm:text-lg drop-shadow">
                   <span>Delivery Fee</span>
                   <span className="font-semibold">KSh 200.00</span>
                 </div>
-
                 <div className="border-t-2 border-white/30 pt-4 sm:pt-5 flex justify-between">
                   <span className="text-lg sm:text-xl font-bold text-white drop-shadow-lg">Total</span>
                   <span className="text-2xl sm:text-3xl font-bold text-white drop-shadow-lg">
@@ -183,7 +190,6 @@ const Cart = () => {
                   </span>
                 </div>
               </div>
-
               <button
                 onClick={handleCheckout}
                 className="w-full bg-white/20 text-white py-4 sm:py-5 rounded-full font-medium 
@@ -194,7 +200,6 @@ const Cart = () => {
                 Proceed to Checkout
                 <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
-
               <Link
                 to="/products"
                 className="block text-center mt-5 sm:mt-6 text-white hover:text-white/80 font-medium 
@@ -202,10 +207,8 @@ const Cart = () => {
               >
                 ← Continue Shopping
               </Link>
-
             </div>
           </div>
-
         </div>
       </div>
     </div>

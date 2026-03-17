@@ -72,7 +72,7 @@ const Checkout = () => {
   };
 
   return (
-    <div 
+    <div
       className="min-h-screen"
       style={{
         backgroundImage: `linear-gradient(rgba(210,180,140,0.85), rgba(181,136,99,0.85)), url(${generalBackground})`,
@@ -92,7 +92,6 @@ const Checkout = () => {
           <div>
             <form onSubmit={handleSubmit} className="bg-white/30 backdrop-blur-lg p-8 rounded-3xl shadow-2xl border-2 border-white/40">
               <h2 className="text-3xl font-bold mb-8 text-white drop-shadow-lg">Delivery Information</h2>
-
               <div className="space-y-6">
                 {/* Full Name */}
                 <div>
@@ -207,7 +206,6 @@ const Checkout = () => {
           <div>
             <div className="bg-white/30 backdrop-blur-lg p-8 rounded-3xl shadow-2xl sticky top-24 border-2 border-white/40">
               <h2 className="text-3xl font-bold mb-8 text-white drop-shadow-lg">Order Summary</h2>
-
               <div className="space-y-5 mb-8">
                 {cartItems.map((item) => (
                   <div key={item._id} className="flex items-center gap-4 p-4 bg-white/20 backdrop-blur-sm rounded-2xl border-2 border-white/30">
@@ -216,7 +214,8 @@ const Checkout = () => {
                       alt={item.name}
                       className="w-16 h-16 object-cover rounded-xl shadow-md"
                       onError={(e) => {
-                        e.target.src = 'https://via.placeholder.com/150?text=Product';
+                        e.target.onerror = null;
+                        e.target.style.display = 'none';
                       }}
                     />
                     <div className="flex-1">
@@ -233,7 +232,6 @@ const Checkout = () => {
                   </div>
                 ))}
               </div>
-
               <div className="space-y-4 border-t-2 border-white/30 pt-6">
                 <div className="flex justify-between text-white text-lg drop-shadow">
                   <span>Subtotal</span>
