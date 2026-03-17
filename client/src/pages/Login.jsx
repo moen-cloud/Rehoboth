@@ -79,16 +79,10 @@ const Login = () => {
 
             {/* Password Field */}
             <div>
-              <div className="flex items-center justify-between mb-2">
+              <div className="mb-2">
                 <label className="block text-sm font-semibold text-white drop-shadow">
                   Password
                 </label>
-                <Link
-                  to="/forgot-password"
-                  className="text-sm text-white font-semibold hover:underline drop-shadow transition"
-                >
-                  Forgot password?
-                </Link>
               </div>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -124,7 +118,7 @@ const Login = () => {
           </form>
 
           {/* Register Link */}
-          <div className="text-center">
+          <div className="text-center space-y-3">
             <p className="text-white drop-shadow">
               Don't have an account?{' '}
               <Link
@@ -132,6 +126,15 @@ const Login = () => {
                 className="text-white font-bold transition hover:underline drop-shadow-lg"
               >
                 Register here
+              </Link>
+            </p>
+            <p className="text-white drop-shadow">
+              Forgot your password?{' '}
+              <Link
+                to="/forgot-password"
+                className="text-white font-bold transition hover:underline drop-shadow-lg"
+              >
+                Reset it here
               </Link>
             </p>
           </div>
