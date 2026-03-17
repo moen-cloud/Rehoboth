@@ -15,6 +15,9 @@ const Orders = lazy(() => import('./pages/Orders'));
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const Admin = lazy(() => import('./pages/Admin'));
+const Profile = lazy(() => import('./pages/Profile'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ResetPassword = lazy(() => import('./pages/ResetPassword'));
 
 function App() {
   return (
@@ -34,6 +37,8 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/reset-password/:token" element={<ResetPassword />} />
                 <Route
                   path="/checkout"
                   element={
@@ -47,6 +52,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <Orders />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute>
+                      <Profile />
                     </ProtectedRoute>
                   }
                 />
