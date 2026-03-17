@@ -36,13 +36,13 @@ const Login = () => {
   };
 
   return (
-    <div 
+    <div
       className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
       style={{
         backgroundImage: `linear-gradient(rgba(210,180,140,0.85), rgba(181,136,99,0.85)), url(${generalBackground})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
+        backgroundAttachment: 'fixed',
       }}
     >
       <div className="max-w-md w-full">
@@ -79,9 +79,17 @@ const Login = () => {
 
             {/* Password Field */}
             <div>
-              <label className="block text-sm font-semibold text-white drop-shadow mb-2">
-                Password
-              </label>
+              <div className="flex items-center justify-between mb-2">
+                <label className="block text-sm font-semibold text-white drop-shadow">
+                  Password
+                </label>
+                <Link
+                  to="/forgot-password"
+                  className="text-sm text-white font-semibold hover:underline drop-shadow transition"
+                >
+                  Forgot password?
+                </Link>
+              </div>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Lock className="h-5 w-5 text-gray-500" />
@@ -98,7 +106,7 @@ const Login = () => {
               </div>
             </div>
 
-            {/* Submit Button - Matching Navbar Style */}
+            {/* Submit Button */}
             <button
               type="submit"
               disabled={loading}
@@ -119,8 +127,8 @@ const Login = () => {
           <div className="text-center">
             <p className="text-white drop-shadow">
               Don't have an account?{' '}
-              <Link 
-                to="/register" 
+              <Link
+                to="/register"
                 className="text-white font-bold transition hover:underline drop-shadow-lg"
               >
                 Register here
