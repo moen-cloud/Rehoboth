@@ -512,7 +512,7 @@ const seedProducts = async () => {
     console.log('Cleared existing products');
 
     await Product.insertMany(products);
-    console.log('✅ 10 Products added successfully!');
+    console.log('10 Products added successfully!');
 
     process.exit();
   } catch (error) {
