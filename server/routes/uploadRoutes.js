@@ -7,8 +7,9 @@ router.post('/', upload.single('image'), (req, res) => {
   try {
     res.json({ imageUrl: req.file.path });
   } catch (error) {
-    res.status(500).json({ message: 'Upload failed' });
-  }
+  console.error('Upload error details:', error.message, error.stack);
+  res.status(500).json({ message: error.message || 'Upload failed' });
+}
 });
 
 export default router;
