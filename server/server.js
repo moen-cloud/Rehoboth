@@ -48,6 +48,16 @@ app.get('/', (req, res) => {
   res.send('Rehoboth Cereal Shop API is running...');
 });
 
+// Centralized error handler — catches errors thrown by middleware
+// (e.g. multer / Cloudinary upload failures) and routes, and returns
+// a proper JSON response with the real error message instead of a
+// raw HTML "Internal Server Error" page.
+app.use((err, req, res, next) => {
+  console.error('Server error:', err.message);
+  console.error(err.stack);
+  res.status(500).json({ message: err.message || 'Something went wrong' });
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
