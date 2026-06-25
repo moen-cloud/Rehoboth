@@ -208,7 +208,7 @@ const products = [
     description: "Premium quality Sea Salt",
     price: 25,
     image: "/images/products/salt.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 100
   },
 
@@ -395,7 +395,7 @@ const products = [
     description: "Pure vegetable cooking oil",
     price: 680,
     image: "/images/products/cooking-oil.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 60
   },
 
@@ -405,7 +405,7 @@ const products = [
     description: "Fortified All Purpose Home Baking Wheat Flour",
     price: 180,
     image: "/images/products/ajab.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 60
   },
 
@@ -415,7 +415,7 @@ const products = [
     description: "Unga wa uji",
     price: 140,
     image: "/images/products/wimbi.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 60
   },
 
@@ -424,7 +424,7 @@ const products = [
     description: "Unga wa uji",
     price: 140,
     image: "/images/products/mtama.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 60
   },
 
@@ -434,7 +434,7 @@ const products = [
     description: "Unga wa uji(Porridge Flour)",
     price: 140,
     image: "/images/products/muhogo.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 60
   },
 
@@ -443,7 +443,7 @@ const products = [
     description: "Unga wa Uji(Porridge Flour)",
     price: 140,
     image: "/images/products/mawere.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 60
   },
 
@@ -452,7 +452,7 @@ const products = [
     description: "Unga wa uji",
     price: 140,
     image: "/images/products/baridi.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 60
   },
 
@@ -461,7 +461,7 @@ const products = [
     description: "Unga wa uji(Porridge Flour)",
     price: 140,
     image: "/images/products/ndimu.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 60
   },
 
@@ -470,7 +470,7 @@ const products = [
     description: "Maize meal No.1",
     price: 100,
     image: "/images/products/maize-flour.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 60
   },
 
@@ -480,7 +480,7 @@ const products = [
     description: "Raha Premium",
     price: 220,
     image: "/images/products/Raha-Premium.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 60
   },
 
@@ -489,7 +489,7 @@ const products = [
     description: "Maize meal",
     price: 170,
     image: "/images/products/maize-flour.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 60
   },
 
@@ -498,7 +498,7 @@ const products = [
     description: "White refined sugar",
     price: 360,
     image: "/images/products/sugar.jpg",
-    category: "Other",
+    category: "Pantry Staples",
     stock: 150
   }
 ];

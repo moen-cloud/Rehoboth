@@ -26,7 +26,7 @@ import {
 import generalBackground from '../assets/images/backgrounds/general-bg.jpg';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const CATEGORIES = ['Spices', 'Cereals', 'Grains', 'Beverages', 'Snacks', 'Other'];
+const CATEGORIES = ['Spices', 'Cereals', 'Grains', 'Beverages', 'Snacks', 'Pantry Staples', 'Toiletries'];
 const ORDER_STATUSES = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
 
 const STATUS_STYLES = {

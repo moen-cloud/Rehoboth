@@ -20,7 +20,7 @@ const productSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['Spices', 'Cereals', 'Grains', 'Beverages', 'Snacks', 'Other'],
+    enum: ['Spices', 'Cereals', 'Grains', 'Beverages', 'Snacks', 'Pantry Staples', 'Toiletries'],
   },
   stock: {
     type: Number,

@@ -41,7 +41,7 @@ const Products = () => {
     toast.success(`${product.name} added to cart!`);
   };
 
-  const categories = ['All', 'Cereals', 'Spices', 'Grains', 'Beverages', 'Snacks', 'Other'];
+  const categories = ['All', 'Cereals', 'Spices', 'Grains', 'Beverages', 'Snacks', 'Pantry Staples', 'Toiletries'];
 
   const categoryFilteredProducts =
     selectedCategory === 'All'
