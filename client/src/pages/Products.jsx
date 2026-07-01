@@ -215,11 +215,11 @@ const Products = () => {
           {/* Products Grid */}
           {filteredProducts.length === 0 ? (
             <div className="text-center py-20">
-              <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl p-16 max-w-md mx-auto border-2 border-amber-100">
-                <div className="bg-gradient-to-br from-amber-100 to-amber-50 w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Package className="w-16 h-16 text-amber-700" />
+              <div className="bg-white/30 backdrop-blur-lg rounded-3xl shadow-2xl p-16 max-w-md mx-auto border-2 border-white/40">
+                <div className="bg-white/20 w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg border-2 border-white/30">
+                  <Package className="w-16 h-16 text-white drop-shadow-lg" />
                 </div>
-                <p className="text-xl text-gray-700 font-semibold mb-4">
+                <p className="text-xl text-white font-semibold mb-4 drop-shadow-lg">
                   {searchQuery
                     ? `No products found matching "${searchQuery}"`
                     : stockFilter === 'instock'
@@ -231,7 +231,7 @@ const Products = () => {
                 {searchQuery && (
                   <button
                     onClick={clearSearch}
-                    className="mt-4 px-6 py-3 bg-white text-amber-700 rounded-2xl font-bold hover:bg-gray-100 transition-all shadow-xl transform hover:scale-105"
+                    className="mt-4 px-6 py-3 bg-white/20 text-white rounded-full font-bold hover:bg-white/30 transition-all shadow-xl transform hover:scale-105 border-2 border-white/30 backdrop-blur-sm"
                   >
                     Clear search
                   </button>
