@@ -216,9 +216,6 @@ const Products = () => {
           {filteredProducts.length === 0 ? (
             <div className="text-center py-20">
               <div className="bg-white/30 backdrop-blur-lg rounded-3xl shadow-2xl p-16 max-w-md mx-auto border-2 border-white/40">
-                <div className="bg-white/20 w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg border-2 border-white/30">
-                  <Package className="w-16 h-16 text-white drop-shadow-lg" />
-                </div>
                 <p className="text-xl text-white font-semibold mb-4 drop-shadow-lg">
                   {searchQuery
                     ? `No products found matching "${searchQuery}"`
