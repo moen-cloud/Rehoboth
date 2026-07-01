@@ -272,13 +272,12 @@ const Navbar = () => {
                   <Link
                     to="/orders"
                     onClick={closeMobileMenu}
-                    className={`px-5 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
+                    className={`px-5 py-3 rounded-full font-medium transition-all duration-300 ${
                       isActive('/orders')
                         ? 'bg-white text-amber-700 shadow-lg'
                         : 'text-white hover:bg-white/30 backdrop-blur-sm'
                     }`}
                   >
-                    <Package className="w-5 h-5" />
                     Orders
                   </Link>
                   {user.isAdmin && (
@@ -313,22 +312,20 @@ const Navbar = () => {
                     <Link
                       to="/profile"
                       onClick={closeMobileMenu}
-                      className={`w-full flex items-center gap-2 px-5 py-3 mb-2 rounded-full font-medium transition-all duration-300 border-2 border-white/30 shadow-lg backdrop-blur-sm ${
+                      className={`w-full flex items-center px-5 py-3 mb-2 rounded-full font-medium transition-all duration-300 border-2 border-white/30 shadow-lg backdrop-blur-sm ${
                         isActive('/profile')
                           ? 'bg-white text-amber-700'
                           : 'text-white hover:bg-white/30 bg-white/20'
                       }`}
                     >
-                      <Lock className="w-5 h-5" />
                       Profile & Change Password
                     </Link>
 
                     {/* Logout */}
                     <button
                       onClick={handleLogout}
-                      className="w-full px-5 py-3 text-white hover:bg-white/30 bg-white/20 rounded-full font-medium transition-all duration-300 flex items-center justify-center gap-2 border-2 border-white/30 shadow-lg backdrop-blur-sm"
+                      className="w-full px-5 py-3 text-white hover:bg-white/30 bg-white/20 rounded-full font-medium transition-all duration-300 flex items-center justify-center border-2 border-white/30 shadow-lg backdrop-blur-sm"
                     >
-                      <LogOut className="w-5 h-5" />
                       Logout
                     </button>
                   </>
