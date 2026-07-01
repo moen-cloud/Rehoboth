@@ -113,7 +113,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
-            {['Cereals', 'Spices', 'Grains', 'Beverages', 'Snacks', 'Other'].map(
+            {['Cereals', 'Spices', 'Grains', 'Beverages', 'Snacks', 'Pantry Staples', 'Toiletries'].map(
               (category) => (
                 <Link
                   key={category}

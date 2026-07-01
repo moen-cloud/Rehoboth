@@ -1,16 +1,10 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendPasswordResetEmail = async ({ toEmail, toName, resetUrl }) => {
-  const mailOptions = {
-    from: `"Rehoboth Cereals & Shop" <${process.env.EMAIL_USER}>`,
+  await resend.emails.send({
+    from: 'Rehoboth Cereals & Shop <onboarding@resend.dev>',
     to: toEmail,
     subject: 'Reset Your Password – Rehoboth Cereals & Shop',
     html: `
@@ -41,7 +35,5 @@ export const sendPasswordResetEmail = async ({ toEmail, toName, resetUrl }) => {
         </div>
       </div>
     `,
-  };
-
-  await transporter.sendMail(mailOptions);
+  });
 };
