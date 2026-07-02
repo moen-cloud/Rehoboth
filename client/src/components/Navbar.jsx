@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
 import { ShoppingCart, User, LogOut, Menu, X, Package, Lock, ChevronDown } from 'lucide-react';
 import navbarBackground from '../assets/images/backgrounds/navbar-bg.jpg';
+import rehobothLogo from '../assets/images/rehoboth-logo.png';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -69,17 +70,12 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group" onClick={closeMobileMenu}>
-            <div className="hidden sm:block">
-              <span className="text-2xl font-bold text-white tracking-wide drop-shadow-lg">
-                Rehoboth Cereals & Shop
-              </span>
-            </div>
-            <div className="sm:hidden">
-              <span className="text-xl font-bold text-white tracking-wide drop-shadow-lg">
-                Rehoboth Cereals & Shop
-              </span>
-            </div>
+          <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
+            <img
+              src={rehobothLogo}
+              alt="Rehoboth Cereals & Shop"
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
