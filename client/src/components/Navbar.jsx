@@ -71,7 +71,7 @@ const Navbar = () => {
             <img
               src={rehobothLogo}
               alt="Rehoboth Cereals & Shop"
-              className="h-18 w-auto"
+              className="h-16 w-auto"
               style={{ filter: 'brightness(0) invert(1) drop-shadow(0px 2px 6px rgba(0,0,0,0.5))' }}
             />
           </Link>
