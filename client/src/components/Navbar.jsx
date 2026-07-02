@@ -28,7 +28,6 @@ const Navbar = () => {
     setMobileMenuOpen(false);
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -39,12 +38,10 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close dropdown on route change
   useEffect(() => {
     setProfileDropdownOpen(false);
   }, [location.pathname]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -67,15 +64,15 @@ const Navbar = () => {
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24">
 
           {/* Logo */}
           <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
             <img
               src={rehobothLogo}
               alt="Rehoboth Cereals & Shop"
-              className="h-35 w-auto"
-              style={{ filter: 'brightness(0) invert(1) drop-shadow(0px 1px 3px rgba(0,0,0,0.3))' }}
+              className="h-20 w-auto"
+              style={{ filter: 'brightness(0) invert(1) drop-shadow(0px 2px 6px rgba(0,0,0,0.5))' }}
             />
           </Link>
 
@@ -132,7 +129,6 @@ const Navbar = () => {
 
           {/* Right Side - Cart & Auth (Desktop) */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Cart */}
             <Link
               to="/cart"
               className="relative p-3 hover:bg-white/15 rounded-full transition-all duration-300 transform hover:scale-110 group backdrop-blur-sm"
@@ -145,10 +141,8 @@ const Navbar = () => {
               )}
             </Link>
 
-            {/* Auth Buttons */}
             {user ? (
               <div className="flex items-center gap-3">
-                {/* Profile Dropdown */}
                 <div className="relative" ref={dropdownRef}>
                   <button
                     onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
@@ -161,7 +155,6 @@ const Navbar = () => {
                     <ChevronDown className={`w-4 h-4 text-white transition-transform duration-200 ${profileDropdownOpen ? 'rotate-180' : ''}`} />
                   </button>
 
-                  {/* Dropdown Menu */}
                   {profileDropdownOpen && (
                     <div className="absolute right-0 mt-2 w-52 rounded-2xl shadow-2xl overflow-hidden border-2 border-white/30 z-50"
                       style={{
@@ -215,7 +208,6 @@ const Navbar = () => {
 
           {/* Mobile Menu Button & Cart */}
           <div className="flex md:hidden items-center gap-2">
-            {/* Mobile Cart */}
             <Link
               to="/cart"
               className="relative p-2.5 hover:bg-white/15 rounded-full transition-all backdrop-blur-sm"
@@ -229,7 +221,6 @@ const Navbar = () => {
               )}
             </Link>
 
-            {/* Hamburger Menu */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2.5 hover:bg-white/15 rounded-full transition-all backdrop-blur-sm"
@@ -309,7 +300,6 @@ const Navbar = () => {
               <div className="pt-4 border-t border-white/20 mt-3">
                 {user ? (
                   <>
-                    {/* User Info */}
                     <div className="px-5 py-3 mb-2 bg-white/20 backdrop-blur-sm rounded-full flex items-center gap-3 border-2 border-white/30 shadow-lg">
                       <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center shadow-md">
                         <User className="w-5 h-5 text-white" />
@@ -317,7 +307,6 @@ const Navbar = () => {
                       <span className="text-white font-medium">{user.name}</span>
                     </div>
 
-                    {/* Profile Link */}
                     <Link
                       to="/profile"
                       onClick={closeMobileMenu}
@@ -330,7 +319,6 @@ const Navbar = () => {
                       Profile & Change Password
                     </Link>
 
-                    {/* Logout */}
                     <button
                       onClick={handleLogout}
                       className="w-full px-5 py-3 text-white hover:bg-white/30 bg-white/20 rounded-full font-medium transition-all duration-300 flex items-center justify-center border-2 border-white/30 shadow-lg backdrop-blur-sm"
