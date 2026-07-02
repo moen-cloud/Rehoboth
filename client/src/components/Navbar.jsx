@@ -64,14 +64,14 @@ const Navbar = () => {
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-22">
+        <div className="flex justify-between items-center h-20">
 
           {/* Logo */}
           <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
             <img
               src={rehobothLogo}
               alt="Rehoboth Cereals & Shop"
-              className="h-18 w-auto"
+              className="h-14 w-auto"
               style={{ filter: 'brightness(0) invert(1) drop-shadow(0px 2px 6px rgba(0,0,0,0.5))' }}
             />
           </Link>
